@@ -1,0 +1,47 @@
+.loan-form-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .loan-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    max-width: 500px;
+
+    .form-slider {
+      align-self: stretch;
+    }
+
+    .coupon-area {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+
+      text-transform: uppercase;
+    }
+
+    button[type="submit"] {
+      text-transform: uppercase;
+    }
+  }
+
+  .calculator {
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+    row-gap: 5px;
+    column-gap: 50px;
+
+    padding: 10px;
+
+    .value {
+      text-align: right;
+    }
+  }
+}

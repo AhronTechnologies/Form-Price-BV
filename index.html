@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Loan Form</title>
+    <link href="styles/slider.css" rel="stylesheet" />
+    <link href="styles/index.css" rel="stylesheet" />
+    <script src="scripts/slider.js"></script>
+    <script src="scripts/index.js"></script>
+  </head>
+  <body>
+    <div class="loan-form-container">
+      <form class="loan-form">
+        <label for="loan-amount-input">
+          <h3>Kolik peněz budete potřebovat?</h3>
+        </label>
+        <input
+          id="loan-amount-input"
+          name="loan-amount"
+          type="range"
+          min="1000"
+          max="25000"
+          value="50"
+          step="100"
+        />
+        <div id="loan-amount-slider" class="form-slider"></div>
+        <div class="coupon-area">
+          <label for="coupon-code">
+            <h3>Slevový kód</h3>
+          </label>
+          <input id="coupon-code" name="coupon" type="text" />
+          <button type="button">Použít</button>
+        </div>
+        <button type="submit">požádat</button>
+      </form>
+      <div class="calculator">
+        <div>Půjčka</div>
+        <div class="value" id="calc-amount"></div>
+        <div>Peníze Vám pošleme</div>
+        <div class="value">Dnes</div>
+        <div>Datum splatnosti</div>
+        <div class="value" id="calc-due-date">17. 4. 2024</div>
+        <div>Úrok</div>
+        <div class="value" id="calc-interest"></div>
+        <div>Poplatek</div>
+        <div class="value" id="calc-fee"></div>
+        <div>Sleva</div>
+        <div class="value" id="calc-discount">0 Kč</div>
+        <div>Celkem zaplatíte</div>
+        <div class="value" id="calc-total"></div>
+      </div>
+    </div>
+  </body>
+  <script></script>
+</html>
