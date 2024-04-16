@@ -73,7 +73,6 @@ const FEES = {
   [30000]: { fee: 8661, interest: 2856 },
 };
 
-
 /**
  * @typedef CalcDisplayElems
  * @type {object}
@@ -114,14 +113,33 @@ function getFormInputs() {
   };
 }
 
-const formattedFEES = {};
-
-for (const key in FEES) {
-  if (FEES.hasOwnProperty(key)) {
-    const formattedKey = key.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    formattedFEES[formattedKey] = FEES[key];
+function formatNumberWithSpaces(number) {
+  
+  let numberString = number.toString();
+  
+  
+  let parts = numberString.split(".");
+  let integerPart = parts[0];
+  let decimalPart = parts[2] || "";
+  
+  
+  integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  
+  
+  let formattedNumber = integerPart;
+  if (decimalPart !== "") {
+      formattedNumber += "." + decimalPart;
   }
+  
+  return formattedNumber;
 }
+
+
+
+const number = 1244;
+const formattedNumber = formatNumberWithSpaces(number);
+console.log(formattedNumber); 
+
 function recalculate() {
   const displayElems = getCalcDisplayElems();
   const FormInputs = getFormInputs();
@@ -131,11 +149,18 @@ function recalculate() {
   const fees = FEES[amount];
 
   if (fees) {
-    displayElems.amount.innerText = `${amount} Kč`;
-    displayElems.interest.innerText = `${fees.interest} Kč`;
-    displayElems.fee.innerText = `${fees.fee} Kč`;
+    displayElems.amount.innerText = `${formatNumberWithSpaces(amount)} Kč`;
+displayElems.interest.innerText = `${formatNumberWithSpaces(fees.interest)} Kč`;
+displayElems.fee.innerText = `${formatNumberWithSpaces(fees.fee)} Kč`;
+const total = amount + fees.interest + fees.fee;
+displayElems.total.innerText = `${formatNumberWithSpaces(total)} Kč`;
+
+
+
     displayElems.discount.innerText = `0 Kč`;
-    displayElems.total.innerText = `${amount + fees.interest + fees.fee} Kč`;
-    displayElems.dueDate.innerText = new Date().toLocaleDateString();
+
+    const dueDate = new Date();
+    dueDate.setMonth(dueDate.getMonth() + 1);
+    displayElems.dueDate.innerText = dueDate.toLocaleDateString();
   }
 }
