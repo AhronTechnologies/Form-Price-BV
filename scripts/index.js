@@ -73,6 +73,7 @@ const FEES = {
   [30000]: { fee: 8661, interest: 2856 },
 };
 
+
 /**
  * @typedef CalcDisplayElems
  * @type {object}
@@ -113,6 +114,14 @@ function getFormInputs() {
   };
 }
 
+const formattedFEES = {};
+
+for (const key in FEES) {
+  if (FEES.hasOwnProperty(key)) {
+    const formattedKey = key.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    formattedFEES[formattedKey] = FEES[key];
+  }
+}
 function recalculate() {
   const displayElems = getCalcDisplayElems();
   const FormInputs = getFormInputs();
